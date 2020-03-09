@@ -34,7 +34,9 @@ Specific options:
 Specific options for load_tracker:
         --status                     Provide number of rows status in the tracker
                                      Does not load any data
-
+        --inprogress_to_pending      Change IN-PROGRESS rows BACK to PENDING
+                                     This allows reprocessing of stuck rows.
+                                     
 Specific options for process_batch:
         --batch-size SIZE            Number of batches to process
                                      Default value: 6
