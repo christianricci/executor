@@ -9,7 +9,7 @@ class Optparse
 
   class ScriptOptions
     attr_accessor :run_option, :db_lock_wait, :debug,
-                  :load_file, :batch_size, :batch_slice, :status
+                  :load_file, :batch_size, :batch_slice, :status, :inprogress_to_pending
 
     def initialize
       self.run_option = nil
@@ -36,6 +36,13 @@ class Optparse
                   "Does not load any data"
                  ) do |status|
           self.status = status
+        end
+
+        parser.on("--inprogress_to_pending",
+                  "Change IN-PROGRESS rows BACK to PENDING",
+                  "This allows reprocessing of stuck rows."
+                 ) do |inprogress_to_pending|
+          self.inprogress_to_pending = inprogress_to_pending
         end
 
         parser.separator ""

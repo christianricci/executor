@@ -47,6 +47,12 @@ class Executor
     t = ProgressTracker.new(load_file: params.load_file,
                             db_lock_wait: params.db_lock_wait,
                             debug: params.debug)
+
+    if params.inprogress_to_pending
+      t.inprogress_to_pending
+      puts "#{t.count}"
+    end
+
     if params.status
       puts "#{t.count}"
     else
