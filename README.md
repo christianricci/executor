@@ -1,6 +1,27 @@
 # executor
 Generic code parallel execution and resume execution from a csv file  
 
+# setup
+
+1 - create a csv file that contains the list of arguments to run. The idea is that each line is executed in batches in parallel. The line data is pass to the run method used as parameters. (see exmaple sample_tracker.csv)
+
+2 - Modify executor.rb and add your code as required. This is the code to be executed in parallel everytime a line is accessed.
+
+```
+  def self.execute(data_element)
+    #
+    # ----- Code START here ----
+    # Add the block of code to be executed in parallel mode
+    #
+    # Extract the line content being processed
+    line = JSON.parse(data_element)['data'].chomp
+    puts "#{line}"
+    #
+    # ----- Code END here ----
+    #
+  end
+```
+
 # run instructions
 
 ```
